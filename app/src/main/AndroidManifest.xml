@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.appotekid_android">
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- alarm Manager permissions -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_icon_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:label">
+        <activity
+            android:name=".Activities.SpecificMedicineActivity"
+            android:label="@string/app_icon_name"
+            android:launchMode="standard"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName=".Activities.ViewMedicineActivity">
+
+            <!-- ParentActivityName and the following meta-data tag create our back-button header on each activity -->
+
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ViewMedicineActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.RegisterActivity"
+            android:label="@string/title_activity_register"
+            android:parentActivityName=".Activities.LoginActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.ViewPatientsActivity"
+            android:label="@string/title_activity_view_patients"
+            android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.CabinetActivity"
+            android:label="@string/title_activity_cabinet"
+            android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Camera.CameraActivity"
+            android:parentActivityName=".MainActivity">
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.ViewMedicineActivity"
+            android:label="@string/app_icon_name"
+            android:parentActivityName=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:resource="@xml/searchable"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.DoctorActivity"
+            android:label="@string/title_activity_doctor"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+ UNCOMMENT TO MAKE LOGIN DEFAULT ACTIVITY.
+        <activity
+            android:name=".Activities.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+                android:value="barcode" />
+        </activity>
+        -->
+        <!-- Delete the following afterwards -->
+        <activity android:name=".Activities.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+                android:value="barcode" />
+        </activity>
+        <activity android:name=".AlarmReminders.AlarmReminderActivity" />
+        <activity
+            android:name=".AlarmReminders.AddReminderActivity"
+            android:label="Add Reminder"
+            android:windowSoftInputMode="stateHidden"
+            android:parentActivityName=".AlarmReminders.AlarmReminderActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AlarmReminders.AlarmReminderActivity" />
+        </activity>
+
+        <provider
+            android:name=".AlarmReminders.data.AlarmReminderProvider"
+            android:authorities="com.example.appotekid_android"
+            android:exported="false" />
+
+        <service
+            android:name=".AlarmReminders.reminder.ReminderAlarmService"
+            android:exported="false" />
+    </application>
+
+</manifest>
